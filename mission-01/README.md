@@ -45,4 +45,39 @@ function App() {
 }
 ```
 이렇게 props로 들어가야할 항목들을 입력해준 다음에 렌더링 해본 결과:
-<img src="https://github.com/dldnlee/react-homework/assets/83799987/6c68c437-f578-4841-81e2-d1533861bada" width="50px">
+<br>
+<img src="https://github.com/dldnlee/react-homework/assets/83799987/6c68c437-f578-4841-81e2-d1533861bada" width="200px">
+렌더링이 잘 되었습니다.
+
+### 3. 데이터베이스에서 여러가지의 데이터를 컴포넌트 props안에 넣기
+처음에는 forEach문을 돌려서 작업을 하려고 했지만, 구글링을 조금 해보니 자바스크립트의 `.map()`메서드가 적합하다고 많이들 얘기해서 사용을 해봤습니다.
+```
+const posts = {
+  ...데이터
+}
+
+const jsxPosts = posts.map((item) => {
+  return(
+    <Post 
+      image={item.image}
+      postTitle={item.postTitle}
+      category={item.category}
+      author={item.author}
+    />
+  )
+})  
+```
+이러한 방식으로 배열로 돼있는 데이터 셋에 .map을 사용해서 각 아이템의 요소들을 사용해서 Post컴포넌트 안에 넣어줬습니다.
+```
+function App() {
+  return (
+    <div className="App max-w-[260px] grid grid-cols-2 gap-[10px] px-2 py-2">
+      {jsxPosts}
+    </div>
+  );
+}
+```
+.map을 사용해서 새로 만든 배열을 App안에 그대로 넣어줬더니 화면에 잘 렌더링 되는 결과를 볼 수 있었습니다.
+<img src="https://github.com/dldnlee/react-homework/assets/83799987/c436f20d-2348-4a92-ad07-058aa767c539" width="250px">
+"
+
