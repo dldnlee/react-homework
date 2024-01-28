@@ -15,5 +15,41 @@
 ## Components
 제가 필요한 컴포넌트는 아토믹 디자인을 고려해서, 유기체 컴포넌트를 2개 만들고, 각 컴포넌트 안에서 분자를 구현해서 내부적으로 사용하기로 결정 했습니다.
 
+### TopBar.jsx
+가장 먼저 앱의 상단에 있는 검색 필드랑 원하는 카테고리를 선택할 수 있는 버튼 집합을 구현했습니다.
 
+전체적인 구조는 TopBar 안에 Search랑 Category가 들어가도록 구현했습니다.
+```
+function SearchBar() {
+  return (
+    <form action="/" className="search-container">
+      <label htmlFor="search-input" className="sr-only">검색</label>
+      <input type="text" placeholder="검색" id="search-input"/>
+      <button>
+        <img src={search} alt="돋보기" />
+      </button>
+    </form>
+  )
+}
+
+function Category() {
+  return (
+    <div className="category-container">
+      <button>전체</button>
+      <button>같이해요</button>
+      <button>질의응답</button>
+    </div>
+  )
+}
+
+export default function TopBar() {
+  return (
+    <>
+      <SearchBar />
+      <Category />
+    </>
+  )
+}
+```
+Category랑 SearchBar는 다른 곳에 사용할 필요 없다고 생각해서 내보내지 않고 그냥 TopBar.jsx안에서 사용될 수 있게끔 구현하고 App.jsx에서 TopBar.jsx를 불러와서 렌더링 했습니다.
 
