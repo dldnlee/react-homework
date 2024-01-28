@@ -80,5 +80,48 @@ export default function Posts() {
   )
 }
 ```
+<img src="https://github.com/dldnlee/react-homework/assets/83799987/aae38417-0f5f-48fa-a514-54b36ea4ce23" width="250px" >
 
+### props로 동적 렌더링 및 리스트 렌더링
+Post 컴포넌트의 매개변수로 props를 사용해서 동적 렌더링 기능을 추가 했습니다. 
+```
+function Post(props) {
+  return (
+    <button type="button" className='post-instance'>
+      <div className='post-badge'>{props.category}</div>
+      <h2 className='post-title'>{props.title.length > 20 ? props.content.slice(0, 20) + "..." : props.title}</h2>
+      <p className='post-content'>{props.content.length > 30 ? props.content.slice(0, 30) + "..." : props.content}</p>
+      <p className='post-location'>{props.location}</p>
+    </button>
+  )
+}
+```
+
+#### 리스트 렌더링
+데이터 파일에서 데이터를 불러오고 `.map()`메서드로 Post props에 값을 할당 해줬습니다.
+```
+const posts = postData.map(post => {
+  return (
+    <Post
+      key={post.id}
+      {...post}
+    />
+  )
+})
+```
+마지막으로 새로 만든 리스트를 Posts 컴포넌트 안에 넣어줘서 마크업을 완료했습니다.
+```
+export default function Posts() { 
+  return (
+    <div className="post-container">
+      {posts}
+    </div>
+  )
+}
+```
+<br>
+<img src="https://github.com/dldnlee/react-homework/assets/83799987/c9aed924-3270-45d4-8393-b6a6c90a311f" width="250px">
+
+
+key값만 id로 지정하고 나머지는 spread문법으로 데이터값을 불러왔습니다. 데이터 파일에 있는 값들을 게시물에 사용하기 위해 `.map()` 메서들을 사용해서 각 데이터별로 게시물 컴포넌트를 리스트 안에 담았습니다.
 
