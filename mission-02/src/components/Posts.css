@@ -1,0 +1,41 @@
+
+
+.post-container {
+  height: 100vh;
+  width: 100%;
+  background: white;
+}
+
+.post-instance {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  gap: 3px;
+  background: white;
+  padding: 10px 10px;
+  color: black;
+  border: none;
+  border-bottom: 1px solid gray;
+
+  h2, p {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+}
+
+.post-badge {
+  background: rgb(190, 190, 190);
+  color: white;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.post-location {
+  color: gray;
+  font-size: .7rem;
+
+  
+}
