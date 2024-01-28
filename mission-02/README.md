@@ -13,7 +13,7 @@
 
 
 ## Components
-제가 필요한 컴포넌트는 아토믹 디자인을 고려해서, 유기체 컴포넌트를 2개 만들고, 각 컴포넌트 안에서 분자를 구현해서 내부적으로 사용하기로 결정 했습니다.
+제가 필요한 컴포넌트는 아토믹 디자인을 고려해서, 유기체 컴포넌트를 2개(TopBar, Posts) 만들고, 각 컴포넌트 안에서 분자를 구현해서 내부적으로 사용하기로 결정 했습니다.
 
 ### TopBar.jsx
 가장 먼저 앱의 상단에 있는 검색 필드랑 원하는 카테고리를 선택할 수 있는 버튼 집합을 구현했습니다.
@@ -52,4 +52,33 @@ export default function TopBar() {
 }
 ```
 Category랑 SearchBar는 다른 곳에 사용할 필요 없다고 생각해서 내보내지 않고 그냥 TopBar.jsx안에서 사용될 수 있게끔 구현하고 App.jsx에서 TopBar.jsx를 불러와서 렌더링 했습니다.
+
+<img src="https://github.com/dldnlee/react-homework/assets/83799987/b189b5f4-3ef7-4a25-a555-70fd614897fe" width="250px">
+
+
+### Posts.jsx
+Post.jsx는 내부에 각 게시물의 템플릿의 마크업을 구현한 Post 컴포넌트가 있고 Posts 컴포넌트는 게시물들을 담고 있는 컨테이너 역할을 해줍니다.
+
+#### 동적 렌더링 전 코드:
+```
+function Post() {
+  return (
+    <button type="button" className='post-instance'>
+      <div className='post-badge'>질의응답</div>
+      <h2 className='post-title'>안녕하세요</h2>
+      <p className='post-content'>안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요</p>
+      <p className='post-location'>연남동</p>
+    </button>
+  )
+}
+
+export default function Posts() { 
+  return (
+    <div className="post-container">
+      {posts}
+    </div>
+  )
+}
+```
+
 
